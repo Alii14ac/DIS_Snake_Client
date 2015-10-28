@@ -35,19 +35,36 @@ public class ServerConnection {
 
     public void get(String path){
 
+        try {
+
+
         Client client = Client.create();
 
         WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
-        ClientResponse response = webResource.type("application/json").get();
+        ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
 
 
+        if (response.getStatus() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : "
+                    + response.getStatus());
+        }
+
+        System.out.println("Output from Server .... \n");
         String output = response.getEntity(String.class);
         System.out.println(output);
 
 
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 
     public void post(String json, String path){
+
+        try {
 
         Client client = Client.create();
 
@@ -62,5 +79,12 @@ public class ServerConnection {
         String output = response.getEntity(String.class);
         System.out.println(output);
 
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
     }
+
 }

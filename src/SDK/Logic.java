@@ -18,7 +18,7 @@ public class Logic {
 
         serverConnection.post(json, "login/");
 
-        //test that github commits
+        serverConnection.get("/user");
 
 
     }

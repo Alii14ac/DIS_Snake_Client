@@ -18,6 +18,8 @@ public class Logic {
 
         serverConnection.post(json, "login/");
 
+        //test that github commits
+
 
     }
     public static void createUser(User user){

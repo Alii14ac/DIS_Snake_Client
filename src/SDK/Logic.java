@@ -6,6 +6,9 @@ import com.google.gson.Gson;
  * Created by alexanderlindkjaer on 27/10/15.
  */
 public class Logic {
+
+
+
     public static void login(String username, String password){
 
         ServerConnection serverConnection = new ServerConnection();
@@ -18,7 +21,7 @@ public class Logic {
 
         serverConnection.post(json, "login/");
 
-        serverConnection.get("/user");
+
 
 
     }

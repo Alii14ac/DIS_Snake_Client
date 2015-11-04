@@ -10,6 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+use SnakeDB;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -95,6 +96,10 @@ INSERT INTO `scores` (`id`, `user_id`, `game_id`, `score`, `opponent_id`) VALUES
 -- Table structure for table `users`
 --
 
+use SnakeDB;
+
+drop TABLE users;
+
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) NOT NULL,
   `first_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -112,9 +117,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `created`, `status`, `type`) VALUES
-(1, 'Tobias', 'Oestergaard', 'nioe14af@student.cbs.dk', 'Neric123', '123', '2015-10-15 14:13:22', NULL, NULL),
-(2, 'Charlotte', 'Heinrichtsen', 'charhein@jubii.dk', 'HeinHero', '321', '2015-10-15 08:39:37', NULL, NULL),
-(3, 'Tobias', 'Oestergaard', 'nioe14af@student.cbs.dk', 'Neric123', '123', '2015-10-14 22:00:00', NULL, NULL),
+(1, 'Tobias', 'Oestergaard', 'nioe14af@student.cbs.dk', 'Neric123', '123', '2015-10-15 14:13:22', 'active', NULL),
+(2, 'Charlotte', 'Heinrichtsen', 'charhein@jubii.dk', 'HeinHero', '321', '2015-10-15 08:39:37', 'active', NULL),
+(3, 'Tobias', 'Oestergaard', 'nioe14af@student.cbs.dk', 'Neric123', '123', '2015-10-14 22:00:00', 'active', NULL),
 (4, 'Tobias', 'Oestergaard', 'nioe14af@student.cbs.dk', 'Neric123', '123', '2015-10-15 19:36:50', 'deleted', NULL),
 (5, 'Tobias', 'Oestergaard', 'nioe14af@student.cbs.dk', 'Neric123', '123', '2015-10-15 19:36:24', 'deleted', NULL);
 

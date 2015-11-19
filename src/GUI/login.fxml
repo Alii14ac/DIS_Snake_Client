@@ -7,9 +7,8 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
 
     <children>
-        <Label text="Label" />
-        <Button fx:id="bacon" mnemonicParsing="false" onAction="#action" text="press me!" />
-        <Label fx:id="ham" text="I love bacon" />
+        <Button fx:id="buttonLogin" mnemonicParsing="false" onAction="#action" text="Login" />
+        <Label fx:id="labelConfirm" text="" />
     </children>
 
 </VBox>

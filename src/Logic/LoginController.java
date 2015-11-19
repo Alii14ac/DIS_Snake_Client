@@ -4,6 +4,7 @@ package Logic;
  * Created by alexanderlindkjaer on 17/11/2015.
  */
 
+import SDK.Logic;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,14 +13,20 @@ import javafx.scene.control.Label;
 public class LoginController {
 
 
-    public Button bacon;
-    public Label ham;
+    public Button buttonLogin;
+    public Label labelConfirm;
+
+
+    Logic logic = new Logic();
+
 
 
     public void action(){
 
-        ham.setText("I also love me som Hammm");
-        bacon.setText("Stop touching mee!");
+        logic.login("HeinHero","321");
+
+        buttonLogin.setText("Succes");
+        labelConfirm.setText("you logged in");
 
     }
 

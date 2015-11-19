@@ -15,7 +15,7 @@ public User(String username,String password){
     this.password = password;
 }
 
-public User(){};
+public User(){}
 
     public void setPassword(String password) {
         this.password = password;

@@ -17,13 +17,16 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    //TODO make a stringparser that handles http status codes
+    //TODO make the usermenu stage and make the login stage change to it after succesfull login
 
     @Override
     public void start(Stage primaryStage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/login.fxml"));
         primaryStage.setTitle("Snake");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 725, 516));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
 

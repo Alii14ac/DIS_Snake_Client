@@ -53,7 +53,7 @@ public class LoginController {
         if(logic.userAuth(usernameText.getText(),passwordText.getText())){
 
             //TODO: is this the best way to do it performance vice ? it has to "build" the new scene insted having it preload/stacked like in Swing
-            //
+
 
             Stage stage;
             Parent root;

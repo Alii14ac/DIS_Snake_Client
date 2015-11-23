@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
+   <children>
+      <Label layoutX="300.0" layoutY="18.0" text="Menu" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="logoutButton" layoutX="61.0" layoutY="436.0" mnemonicParsing="false" text="Logout" />
+   </children>
+</Pane>

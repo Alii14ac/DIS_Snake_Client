@@ -4,9 +4,6 @@ package Logic;/**
 
 
 
-import SDK.Api;
-import SDK.Logic;
-import SDK.ServerConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +14,7 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    //TODO make a stringparser that handles http status codes
-    //TODO make the usermenu stage and make the login stage change to it after succesfull login
+
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -36,7 +32,7 @@ public class Main extends Application {
 
 //    ServerConnection sc = new ServerConnection();
 //    Api api = new Api();
-//    Logic lg = new Logic();
+//    Loogic lg = new Loogic();
 
 
       launch(args);

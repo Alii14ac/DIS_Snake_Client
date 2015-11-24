@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
+   <children>
+      <Label layoutX="270.0" layoutY="36.0" text="Create new user" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="logout" layoutX="287.0" layoutY="443.0" onAction="#logout" text="Go back to login">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Hyperlink>
+      <Label fx:id="firstNameCreateUserLabel" layoutX="98.0" layoutY="96.0" text="First name" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lastNameCreateUserLabel" layoutX="96.0" layoutY="149.0" text="Last name" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="userNameCreateUserLabel" layoutX="95.0" layoutY="199.0" text="User name" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordCreateUserLabel" layoutX="95.0" layoutY="247.0" text="Password" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailCreateUserLabel" layoutX="95.0" layoutY="296.0" text="Email" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameCreateUserText" layoutX="238.0" layoutY="97.0" prefHeight="27.0" prefWidth="252.0" />
+      <TextField fx:id="lastNameCreateUserText" layoutX="239.0" layoutY="147.0" prefHeight="27.0" prefWidth="252.0" />
+      <TextField fx:id="userNameCreateUserText" layoutX="239.0" layoutY="196.0" prefHeight="27.0" prefWidth="252.0" />
+      <TextField fx:id="passwordCreateUserText" layoutX="238.0" layoutY="245.0" prefHeight="27.0" prefWidth="252.0" />
+      <TextField fx:id="emailCreateUserText" layoutX="238.0" layoutY="294.0" prefHeight="27.0" prefWidth="252.0" />
+      <Button fx:id="createUserButton" layoutX="300.0" layoutY="342.0" mnemonicParsing="false" onAction="#createNewUser" text="Create user">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

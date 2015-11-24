@@ -11,10 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
+import javafx.event.ActionEvent;
 import java.io.IOException;
 
 
@@ -24,13 +24,25 @@ public class LoginController {
     //login components
     @FXML
     public Button loginButton;
-    public Label makeNewUserLabel;
     public TextField usernameText;
     public PasswordField passwordText;
+    public Hyperlink newUserStage;
 
     //menu components
     @FXML
     public Button logoutButton;
+
+    //createUser components
+    @FXML
+    public Hyperlink logout;
+    public Button createUserButton;
+    public Label firstNameCreateUserLabel, lastNameCreateUserLabel, userNameCreateUserLabel, passwordCreateUserLabel,
+            emailCreateUserLabel;
+    public TextField firstNameCreateUserText, lastNameCreateUserText, userNameCreateUserText,passwordCreateUserText,
+            emailCreateUserText;
+
+
+
 
     Loogic logic = new Loogic();
     Main main = new Main();
@@ -39,6 +51,7 @@ public class LoginController {
 
     public void Login() throws IOException{
 
+        //TODO make error messages.. search for a clearAllText kind of method in javaFX
 
         //if username field is empty = error message
         if(usernameText.getText().equals("")){
@@ -49,10 +62,9 @@ public class LoginController {
 
         }
 
-
         if(logic.userAuth(usernameText.getText(),passwordText.getText())){
 
-            //TODO: is this the best way to do it performance vice ? it has to "build" the new scene insted having it preload/stacked like in Swing
+            //TODO: is this the best way to do it performance vice ? it has to "build" the new scene instead of having it preload/stacked like in Swing
 
 
             Stage stage;
@@ -72,6 +84,58 @@ public class LoginController {
 
 
     }
+
+    public void newUserStage() throws IOException{
+
+        Stage stage;
+        Parent root;
+
+        //get reference to the button's stage
+        stage=(Stage) newUserStage.getScene().getWindow();
+        //load up OTHER FXML document
+        root = FXMLLoader.load(getClass().getResource("/GUI/createUser.fxml"));
+
+        //create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    public void logout (ActionEvent event) throws IOException{
+
+        Stage stage = null;
+        Parent root;
+
+        if(event.getSource()==logout) {
+            //get reference to the button's stage
+            stage=(Stage) logout.getScene().getWindow();
+        }
+
+        if(event.getSource()==logoutButton) {
+            //get reference to the button's stage
+            stage=(Stage) logoutButton.getScene().getWindow();
+        }
+
+        //load up OTHER FXML document
+        root = FXMLLoader.load(getClass().getResource("/GUI/login.fxml"));
+
+        //TODO fix this
+        //create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    public void createNewUser(){
+        //TODO make error messages
+
+    }
+
+
 
 
 

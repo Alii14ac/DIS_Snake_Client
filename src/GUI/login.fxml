@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56; -fx-border-color: BLACK; -fx-border-image-width: 1000;"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56; -fx-border-color: BLACK; -fx-border-image-width: 1000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
    <children>
       <Button fx:id="loginButton" layoutX="306.0" layoutY="376.0" mnemonicParsing="false" onAction="#Login" prefHeight="27.0" prefWidth="113.0" text="Login">
          <font>
@@ -32,15 +31,15 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="makeNewUserLabel" layoutX="384.0" layoutY="447.0"  prefHeight="17.0" prefWidth="182.0" text="Join snake here" textFill="#35a2eb" underline="true">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
       <Label layoutX="155.0" layoutY="32.0" text="Welcome to snake" textFill="WHITE">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
+      <Hyperlink fx:id="newUserStage"  onAction="#newUserStage" layoutX="374.0" layoutY="442.0" text="Create one here" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Hyperlink>
    </children>
 </Pane>

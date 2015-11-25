@@ -132,7 +132,28 @@ public class LoginController {
 
     public void createNewUser(){
         //TODO make error messages
+        //TODO-maybe: make required password length(and double type it) and check for correct email format
 
+        if(firstNameCreateUserText.getText().equals("")){
+
+        }
+        if(lastNameCreateUserText.getText().equals("")){
+
+        }
+        if(userNameCreateUserText.getText().equals("")){
+
+        }
+        if(passwordCreateUserText.getText().equals("")){
+
+        }
+        if(emailCreateUserText.getText().equals("")){
+
+        }
+
+        if(logic.createUser(firstNameCreateUserText.getText(),lastNameCreateUserText.getText(),userNameCreateUserText.getText(),
+                passwordCreateUserText.getText(),emailCreateUserText.getText())){
+
+        }
     }
 
 

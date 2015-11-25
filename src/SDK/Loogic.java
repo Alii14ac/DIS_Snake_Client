@@ -72,7 +72,7 @@ public class Loogic {
 
         String json = new Gson().toJson(usr);
 
-        String message = serverConnection.stringMessageParser(serverConnection.post(json, "user/"));
+        String message = serverConnection.stringMessageParser(serverConnection.post(json, "users/"));
         System.out.println(message);
 
         if (message.equals("User was created")) {

@@ -15,9 +15,6 @@ public class User {
     private String email;
     private String type;
 
-    //TODO: Kan slettes?! Bruges ikke i wrapperen længere
-
-
     public User () {}
 
     //creating get and set method for all the variables, so they can be used by other classes

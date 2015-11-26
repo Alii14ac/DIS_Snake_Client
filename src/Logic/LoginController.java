@@ -7,6 +7,7 @@ package Logic;
 import SDK.Loogic;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,10 +17,13 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class LoginController {
+public class LoginController implements Initializable, GUI.ControlledScreen {
 
+    ScreensController myController;
 
     //login components
     @FXML
@@ -48,6 +52,14 @@ public class LoginController {
     Main main = new Main();
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    public void setScreenParent(ScreensController screenParent){
+        myController = screenParent;
+    }
 
     public void Login() throws IOException{
 
@@ -64,21 +76,10 @@ public class LoginController {
 
         if(logic.userAuth(usernameText.getText(),passwordText.getText())){
 
-            //TODO: is this the best way to do it performance vice ? it has to "build" the new scene instead of having it preload/stacked like in Swing
 
 
-            Stage stage;
-            Parent root;
+            myController.setScreen(Main.screenMenuID);
 
-            //get reference to the button's stage
-            stage=(Stage) loginButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("/GUI/menu.fxml"));
-
-            //create a new scene with root and set the stage
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
         }
 
@@ -87,51 +88,19 @@ public class LoginController {
 
     public void newUserStage() throws IOException{
 
-        Stage stage;
-        Parent root;
-
-        //get reference to the button's stage
-        stage=(Stage) newUserStage.getScene().getWindow();
-        //load up OTHER FXML document
-        root = FXMLLoader.load(getClass().getResource("/GUI/createUser.fxml"));
-
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        myController.setScreen(Main.screenCreateUserID);
 
     }
 
     @FXML
-    public void logout (ActionEvent event) throws IOException{
+    public void logout () throws IOException{
 
-        Stage stage = null;
-        Parent root;
-
-        if(event.getSource()==logout) {
-            //get reference to the button's stage
-            stage=(Stage) logout.getScene().getWindow();
-        }
-
-        if(event.getSource()==logoutButton) {
-            //get reference to the button's stage
-            stage=(Stage) logoutButton.getScene().getWindow();
-        }
-
-        //load up OTHER FXML document
-        root = FXMLLoader.load(getClass().getResource("/GUI/login.fxml"));
-
-        //TODO fix this
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        myController.setScreen(Main.screenLoginID);
 
     }
 
     public void createNewUser(){
-        //TODO make error messages
+        //TODO make error and ok messages
         //TODO-maybe: make required password length(and double type it) and check for correct email format
 
         if(firstNameCreateUserText.getText().equals("")){

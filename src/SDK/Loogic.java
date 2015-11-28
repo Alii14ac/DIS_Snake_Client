@@ -60,7 +60,7 @@ public class Loogic {
 
     public boolean createUser(String firstName, String lastName, String userName, String password, String email ){
 
-        //TODO: make status=active the default on either the server or the DB
+
 
         ServerConnection serverConnection = new ServerConnection();
         User usr = new User();

@@ -5,15 +5,36 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
    <children>
       <Label layoutX="300.0" layoutY="18.0" text="Menu" textFill="WHITE">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Button fx:id="logoutButton" layoutX="61.0" onAction="#logout" layoutY="436.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="logoutButton" layoutX="305.0" layoutY="438.0" mnemonicParsing="false" onAction="#logout" text="Logout">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="MenuButtonPlay" layoutX="225.0" layoutY="113.0" mnemonicParsing="false" onAction="#play" prefHeight="45.0" prefWidth="279.0" text="Play">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="MenuButtonHighscore" layoutX="225.0" layoutY="188.0" mnemonicParsing="false" onAction="#highscores" prefHeight="45.0" prefWidth="279.0" text="Highscores">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="MenuButtonDeleteGame" layoutX="225.0" layoutY="264.0" mnemonicParsing="false" onAction="#deleteGame" prefHeight="45.0" prefWidth="279.0" text="Delete Game">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="MenuButton111" layoutX="225.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="279.0" text="Button">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

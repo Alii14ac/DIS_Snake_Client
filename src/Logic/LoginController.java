@@ -125,6 +125,18 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
         }
     }
 
+    public void play(){
+
+    }
+
+    public void highscores(){
+
+    }
+
+    public void deleteGame(){
+
+    }
+
 
 
 

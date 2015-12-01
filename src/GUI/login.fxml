@@ -36,10 +36,25 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="newUserStage"  onAction="#newUserStage" layoutX="374.0" layoutY="442.0" text="Create one here" underline="true">
+      <Hyperlink fx:id="newUserStage" layoutX="374.0" layoutY="442.0" onAction="#newUserStage" text="Create one here" underline="true">
          <font>
             <Font size="18.0" />
          </font>
       </Hyperlink>
+      <Label fx:id="usernameErrorLbl" layoutX="459.0" layoutY="223.0" text="Please enter valid username" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordErrorLbl" layoutX="459.0" layoutY="320.0" text="Please enter valid password" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="loginErrorLbl" layoutX="193.0" layoutY="353.0" text="Wrong username or password! try again" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

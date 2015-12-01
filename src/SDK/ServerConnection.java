@@ -16,8 +16,10 @@ public class ServerConnection {
 
     public ServerConnection(){
         this.hostAddress = "http://localhost";
-        this.port = 8888;
+        this.port = 8887;
     }
+
+
 
     private String hostAddress;
     private int port;

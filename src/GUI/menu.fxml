@@ -16,9 +16,9 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Button fx:id="MenuButtonPlay" layoutX="225.0" layoutY="113.0" mnemonicParsing="false" onAction="#play" prefHeight="45.0" prefWidth="279.0" text="Play">
+      <Button fx:id="MenuButtonJoin" layoutX="225.0" layoutY="113.0" mnemonicParsing="false" onAction="#joinGame" prefHeight="45.0" prefWidth="137.0" text="Join Game">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Button>
       <Button fx:id="MenuButtonHighscore" layoutX="225.0" layoutY="188.0" mnemonicParsing="false" onAction="#highscores" prefHeight="45.0" prefWidth="279.0" text="Highscores">
@@ -34,6 +34,11 @@
       <Button fx:id="MenuButton111" layoutX="225.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="279.0" text="Button">
          <font>
             <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="MenuButtonCreateGame" layoutX="365.0" layoutY="113.0" mnemonicParsing="false" onAction="#createGame" prefHeight="45.0" prefWidth="137.0" text="Create Game">
+         <font>
+            <Font size="18.0" />
          </font>
       </Button>
    </children>

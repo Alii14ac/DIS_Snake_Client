@@ -52,5 +52,20 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Label fx:id="emptyFieldErrorLbl" layoutX="287.0" layoutY="74.0" text="Please fill all fields" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="createUserErrorLbl" layoutX="176.0" layoutY="396.0" text="User wasn't created! please check your info" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="succesLbl" layoutX="288.0" layoutY="408.0" text="User was created!" textFill="WHITE" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

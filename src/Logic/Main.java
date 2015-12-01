@@ -21,6 +21,17 @@ public class Main extends Application {
     public static String screenCreateUserFile = "/GUI/createUser.fxml";
     public static String screenMenuID = "menu";
     public static String screenMenuFile = "/GUI/menu.fxml";
+    public static String screenCreateGameFile = "/GUI/CreateGame2.fxml";
+    public static String screenCreateGameID = "createGame";
+    public static String screenDeleteGameID = "deleteGame";
+    public static String screenDeleteGameFile = "/GUI/DeleteGame.fxml";
+    public static String screenHighscoresFile = "/GUI/Highscores.fxml";
+    public static String screenHighscoresID = "highscores";
+    public static String screenJoinGameFile = "/GUI/JoinGame.fxml";
+    public static String screenJoinGameID = "joinGame";
+    public static String screenSnakeGameFile = "/GUI/SnakeGame.fxml";
+    public static String screenSnakeGameID = "snakeGame";
+
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -35,6 +46,13 @@ public class Main extends Application {
         mainContainer.loadScreen(Main.screenLoginID, Main.screenLoginFile);
         mainContainer.loadScreen(Main.screenCreateUserID, Main.screenCreateUserFile);
         mainContainer.loadScreen(Main.screenMenuID, Main.screenMenuFile);
+        mainContainer.loadScreen(Main.screenCreateGameID, Main.screenCreateGameFile);
+        mainContainer.loadScreen(Main.screenDeleteGameID, Main.screenDeleteGameFile);
+        mainContainer.loadScreen(Main.screenHighscoresID, Main.screenHighscoresFile);
+        mainContainer.loadScreen(Main.screenJoinGameID, Main.screenJoinGameFile);
+        mainContainer.loadScreen(Main.screenSnakeGameID, Main.screenSnakeGameFile);
+
+
 
         mainContainer.setScreen(Main.screenLoginID);
 

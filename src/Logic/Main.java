@@ -4,6 +4,9 @@ package Logic;/**
 
 
 
+import SDK.Api;
+import SDK.Loogic;
+import SDK.ServerConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -68,12 +71,14 @@ public class Main extends Application {
 
   public static void main(String[] args) {
 
-//    ServerConnection sc = new ServerConnection();
-//    Api api = new Api();
-//    Loogic lg = new Loogic();
+    ServerConnection sc = new ServerConnection();
+    Api api = new Api();
+    Loogic lg = new Loogic();
+
 
 
       launch(args);
+
 
   }
 

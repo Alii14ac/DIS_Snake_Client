@@ -4,7 +4,9 @@ package Logic;
  * Created by alexanderlindkjaer on 17/11/2015.
  */
 
+import SDK.Dto;
 import SDK.Loogic;
+import SDK.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +26,10 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable, GUI.ControlledScreen {
 
     ScreensController myController;
+    //User currentUser;
+
+
+    //TODO slet de components der ikke skal bruges direkte i controlleren
 
     //login components
     @FXML
@@ -51,6 +57,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
     Loogic logic = new Loogic();
     Main main = new Main();
+    Dto dto = new Dto();
 
 
     @Override
@@ -64,7 +71,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
     public void Login() throws IOException{
 
-        //TODO make error messages.. search for a clearAllText kind of method in javaFX
+        //TODO set username og password til en string istedet for at hent dem på den måde
 
         //if username field is empty = error message
         if(usernameText.getText().equals("")){
@@ -128,6 +135,10 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
         myController.setScreen(Main.screenLoginID);
 
+        Dto dto = new Dto();
+
+
+
 
     }
 
@@ -149,10 +160,14 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
         if(logic.createUser(firstNameCreateUserText.getText(),lastNameCreateUserText.getText(),userNameCreateUserText.getText(),
                 passwordCreateUserText.getText(),emailCreateUserText.getText())){
 
+            logic.createGame("alexGameTest","wwwdddssss");
+
             emptyFieldErrorLbl.setVisible(false);
             createUserErrorLbl.setVisible(false);
 
             succesLbl.setVisible(true);
+
+
 
         }else {
             emptyFieldErrorLbl.setVisible(false);
@@ -162,12 +177,16 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
         }
     }
 
-    public void joinGame() throws IOException{
-        myController.setScreen(Main.screenMenuID);
+    public void joinGame() throws IOException {
+        myController.setScreen(Main.screenJoinGameID);
+
+
+
     }
 
     public void createGame(){
         myController.setScreen(Main.screenCreateGameID);
+
 
     }
 

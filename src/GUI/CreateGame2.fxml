@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.GameController" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.GameController">
+   <children>
+      <Label layoutX="144.0" layoutY="27.0" text="Create a new game" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="136.0" text="Game name" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="196.0" text="Set your moves" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="gameNameTxt" layoutX="197.0" layoutY="134.0" />
+      <TextField fx:id="movesTxt" layoutX="197.0" layoutY="191.0" />
+      <Label fx:id="gamNameErrorLbl" layoutX="172.0" layoutY="160.0" text="Please enter a game name" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="movesErrorLbl" layoutX="176.0" layoutY="220.0" text="PLease enter your moves" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="newGameConfirmationLbl" layoutX="144.0" layoutY="244.0" text="Game was created!" textFill="WHITE" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="41.0" layoutY="44.0" mnemonicParsing="false" onAction="#menu" text="Menu" />
+      <Button layoutX="207.0" layoutY="290.0" mnemonicParsing="false" onAction="#createGame" text="Create Game!">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

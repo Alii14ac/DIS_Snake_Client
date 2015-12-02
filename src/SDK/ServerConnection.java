@@ -40,7 +40,7 @@ public class ServerConnection {
         return port;
     }
 
-    public void get(String path){
+    public String get(String path){
 
         try {
 
@@ -56,9 +56,16 @@ public class ServerConnection {
                     + response.getStatus());
         }
 
+        if (response.getStatus() !=0){
+            return response.getEntity(String.class);
+
+        }
+
         System.out.println("Output from Server .... \n");
         String output = response.getEntity(String.class);
         System.out.println(output);
+
+
 
 
         } catch (Exception e) {
@@ -67,6 +74,7 @@ public class ServerConnection {
 
         }
 
+        return "";
     }
 
     public String post(String json, String path){

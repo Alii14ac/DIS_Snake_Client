@@ -1,16 +1,22 @@
 package Logic;
 
 import SDK.Dto;
+import SDK.Game;
 import SDK.Loogic;
 import SDK.UserStats;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,6 +33,8 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
 
 
+    ObservableList<Game> openGames = logic.getOpenGames();
+
     //create game components
 
     @FXML
@@ -34,10 +42,18 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     public TextField gameNameTxt,movesTxt;
 
 
+    @FXML
+    private TableView<Game> table;
+    public TableColumn iDCol,hostCol;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        iDCol.setCellValueFactory(new PropertyValueFactory<Game, Integer>("gameId"));
+
+        table.setItems(openGames);
     }
 
     public void setScreenParent(ScreensController screenParent){
@@ -85,6 +101,19 @@ public class GameController implements Initializable, GUI.ControlledScreen {
             newGameConfirmationLbl.setTextFill(Color.RED);
             newGameConfirmationLbl.setVisible(true);
         }
+    }
+
+    public void populateTable(){
+
+
+
+
+
+
+        iDCol.setCellValueFactory(new PropertyValueFactory<Game, String>("ID"));
+
+
+
 
 
 

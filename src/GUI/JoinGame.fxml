@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="Logic.GameController"/>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.GameController">
+   <children>
+      <Button layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#menu" text="Back" />
+      <Label layoutX="226.0" layoutY="23.0" text="Join a game" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <TableView layoutX="50.0" layoutY="107.0" prefHeight="358.0" prefWidth="224.0" fx:id="table">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" fx:id="iDCol">
+            <cellValueFactory>
+                <PropertyValueFactory property="ID"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="145.9711456298828" text="Host"  fx:id="hostCol">
+            <cellValueFactory>
+                <PropertyValueFactory property="Host"/>
+            </cellValueFactory>
+        </TableColumn>
+        </columns>
+      </TableView>
+   </children>
+</Pane>
+

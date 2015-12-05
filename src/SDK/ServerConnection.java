@@ -143,6 +143,32 @@ public class ServerConnection {
         return "";
     }
 
+    public String delete(String path){
+
+        try {
+
+
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+            ClientResponse response = webResource.type("application/json").delete(ClientResponse.class);
+
+            if (response.getStatus() !=0){
+                return response.getEntity(String.class);
+
+            }
+
+            String output = response.getEntity(String.class);
+            System.out.println(output);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
     public String stringMessageParser(String json)
     {
         JSONParser jsonParser = new JSONParser();

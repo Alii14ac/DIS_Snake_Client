@@ -239,10 +239,35 @@ public class Loogic {
         return false;
 
     }
-    public static void deleteGame(int gameId){
+    public boolean deleteGame(int gameId){
+
+        ServerConnection serverConnection = new ServerConnection();
+
+        String message = serverConnection.stringMessageParser(serverConnection.delete("games/" + gameId));
+        System.out.println(message);
 
 
 
+        if (message.equals("Game was deleted")) {
+
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            int d = Integer.parseInt(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 
 }

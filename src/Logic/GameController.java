@@ -43,13 +43,17 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     public TextField gameNameTxt,movesTxt;
 
 
-    //
+    //join game components
     @FXML
     public TableView<Game> table;
     public TextField joinGameID,joinControlls;
     public Label joinGameSuccesLbl,joinGameErrorLbl;
     //public TableColumn gameID,Host;
 
+    //delete game components
+    @FXML
+    public TextField deleteGameID;
+    public Label deleteGameErrorLbl,deleteGameSuccesLbl;
 
 
     @Override
@@ -126,7 +130,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
         joinGameSuccesLbl.setVisible(false);
         joinGameErrorLbl.setVisible(false);
 
-        if(logic.joinGame(gameId,controls)){
+        if(logic.joinGame(gameId, controls)){
             joinGameSuccesLbl.setVisible(true);
             joinGameErrorLbl.setVisible(false);
         }else{
@@ -140,6 +144,32 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
     public void deleteGame(){
 
+        try {
+
+            int gameID = Integer.parseInt(deleteGameID.getText());
+
+            deleteGameErrorLbl.setVisible(false);
+            deleteGameSuccesLbl.setVisible(false);
+
+
+            if (logic.deleteGame(gameID)) {
+
+                deleteGameErrorLbl.setVisible(false);
+                deleteGameSuccesLbl.setVisible(true);
+
+            } else {
+
+                deleteGameErrorLbl.setVisible(true);
+                deleteGameSuccesLbl.setVisible(false);
+            }
+
+            //checks that ID is numeric and not empty
+        }catch (NumberFormatException nfe){
+
+            deleteGameErrorLbl.setVisible(true);
+            deleteGameSuccesLbl.setVisible(false);
+
+        }
 
     }
 

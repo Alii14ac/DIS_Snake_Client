@@ -6,11 +6,11 @@ import java.util.Date;
  * Created by alexanderlindkjaer on 27/10/15.
  */
 public class Game {
-    private int gameIde
+    private int gameId;
     private int result;
     private int newGame;
     private int endGame;
-    private String namee
+    private String name;
     private String hostControls;
     private User host;
     private User opponent;

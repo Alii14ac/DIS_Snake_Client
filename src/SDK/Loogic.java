@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by alexanderlindkjaer on 27/10/15.
@@ -12,29 +13,18 @@ import java.util.ArrayList;
 public class Loogic {
 
 
-
-    User currentUser = new User();
+    private static User currentUser;
+//    User currentUser = new User();
     ServerConnection serverConnection = new ServerConnection();
 
 
 
+    public Loogic(){
 
-    public static void login(String username, String password){
-
-        ServerConnection serverConnection = new ServerConnection();
-
-        User user = new User();
-        user.setPassword(password);
-        user.setUsername(username);
-
-        String json = new Gson().toJson(user);
-
-        serverConnection.post(json, "login/");
-
-
-
-
+        currentUser = new User();
     }
+
+
 
     public boolean userAuth(String username,String password){
 
@@ -63,7 +53,7 @@ public class Loogic {
                     }
                 }
 
-               // System.out.printf(dto.currentUser.getId()+" this is currents user id");
+
 
                 return true;
             } else if (message.equals("Wrong username or password") || message.equals("Error in JSON")) {
@@ -81,7 +71,9 @@ public class Loogic {
 
 
 
+
     public boolean createUser(String firstName, String lastName, String userName, String password, String email ){
+
 
 
 
@@ -133,7 +125,10 @@ public class Loogic {
 
         ArrayList<Game> openGames = new Gson().fromJson(Data, new TypeToken<ArrayList<Game>>(){}.getType());
 
+        for(Game game : openGames){
 
+            System.out.printf(game.getName());
+        }
 
         return openGames;
 
@@ -148,10 +143,61 @@ public class Loogic {
     public static void getGame(int gameId){
 
     }
-    public static void joinGame(int gameId, User opponent, String controls){
+    public boolean joinGame(int gameId, String controls){
+
+        ServerConnection serverConnection = new ServerConnection();
+
+        UserStats opponent = new UserStats();
+        Game game = new Game();
+
+        opponent.setId(currentUser.getId());
+        opponent.setControls(controls);
+
+        game.setOpponent(opponent);
+        game.setGameId(gameId);
+
+        String json = new Gson().toJson(game);
+
+        //serverConnection.post(json, "create");
+
+        String message = serverConnection.stringMessageParser(serverConnection.put(json, "games/join/"));
+        System.out.println(message);
+
+
+
+        if (message.equals("Game was joined")) {
+
+            startGame(game);
+            return true;
+        }
+
+        return false;
+
 
     }
-    public static void startGame(int gameId){
+
+
+    public boolean startGame(Game game){
+
+//        Game game = new Game();
+//
+//        game.setGameId(gameID);
+
+        String json = new Gson().toJson(game);
+
+        //serverConnection.post(json, "create");
+
+        String message = serverConnection.stringMessageParser(serverConnection.put(json, "games/start/"));
+        System.out.println(message);
+
+
+
+        if (message.equals("game started")) {
+
+            return true;
+        }
+
+        return false;
 
     }
     public boolean createGame(String gameName, String hostControlls){

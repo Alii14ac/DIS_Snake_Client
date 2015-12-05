@@ -42,6 +42,10 @@ public class Game {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setHostControls(String hostControls) {
         this.hostControls = hostControls;
     }
@@ -64,6 +68,10 @@ public class Game {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public Date getCreated() {
+        return created;
     }
 
     public void setMapSize(int mapSize) {

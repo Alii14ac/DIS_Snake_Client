@@ -110,6 +110,39 @@ public class ServerConnection {
         return "";
     }
 
+    public String put(String json, String path){
+
+        try {
+
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+            ClientResponse response = webResource.type("application/json").put(ClientResponse.class, json);
+
+            System.out.printf(json);
+
+//        if (response.getStatus() != 200 && response.getStatus() != 201) {
+//            throw new RuntimeException("Failed : HTTP error code : "
+//                    + response.getStatus());
+//        }
+
+            String output = response.getEntity(String.class);
+            System.out.println(output);
+
+            if (response != null) {
+                return output;
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return "";
+    }
+
     public String stringMessageParser(String json)
     {
         JSONParser jsonParser = new JSONParser();

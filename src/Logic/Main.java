@@ -76,6 +76,11 @@ public class Main extends Application {
     Loogic lg = new Loogic();
 
 
+//      lg.userAuth("at","berg");
+//      lg.joinGame(50,"wwaaasssss");
+//      lg.startGame(48);
+
+//      lg.createGame("alexGameTest","wwwdddssss");
 
       launch(args);
 

@@ -43,8 +43,11 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     public TextField gameNameTxt,movesTxt;
 
 
+    //
     @FXML
-    private TableView<Game> table;
+    public TableView<Game> table;
+    public TextField joinGameID,joinControlls;
+    public Label joinGameSuccesLbl,joinGameErrorLbl;
     //public TableColumn gameID,Host;
 
 
@@ -113,6 +116,31 @@ public class GameController implements Initializable, GUI.ControlledScreen {
             newGameConfirmationLbl.setTextFill(Color.RED);
             newGameConfirmationLbl.setVisible(true);
         }
+    }
+
+    public void joinGame(){
+
+        int gameId = Integer.parseInt(joinGameID.getText());
+        String controls = joinControlls.getText();
+
+        joinGameSuccesLbl.setVisible(false);
+        joinGameErrorLbl.setVisible(false);
+
+        if(logic.joinGame(gameId,controls)){
+            joinGameSuccesLbl.setVisible(true);
+            joinGameErrorLbl.setVisible(false);
+        }else{
+            joinGameSuccesLbl.setVisible(false);
+            joinGameErrorLbl.setVisible(true);
+        }
+
+
+
+    }
+
+    public void deleteGame(){
+
+
     }
 
 

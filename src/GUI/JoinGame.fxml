@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.GameController">
+<Pane fx:id="joinErrorLbl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.GameController">
    <children>
       <Button layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#menu" text="Back" />
       <Label layoutX="226.0" layoutY="23.0" text="Join a game" textFill="WHITE">
@@ -15,7 +15,7 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="50.0" layoutY="107.0" prefHeight="358.0" prefWidth="224.0">
+      <TableView fx:id="table" layoutX="29.0" layoutY="141.0" prefHeight="358.0" prefWidth="224.0">
         <columns>
           <TableColumn fx:id="gameID" prefWidth="75.0" text="ID">
             <cellValueFactory>
@@ -29,6 +29,29 @@
         </TableColumn>
         </columns>
       </TableView>
-      <Button layoutX="127.0" layoutY="70.0" mnemonicParsing="false" onAction="#populateTable" text="show table" />
+      <Button layoutX="73.0" layoutY="85.0" mnemonicParsing="false" onAction="#populateTable" text="Show open games" />
+      <Label layoutX="367.0" layoutY="143.0" text="Game ID" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="367.0" layoutY="197.0" text="Controlls" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="joinGameID" layoutX="477.0" layoutY="141.0" />
+      <TextField fx:id="joinControlls" layoutX="478.0" layoutY="194.0" />
+      <Button layoutX="510.0" layoutY="239.0" mnemonicParsing="false" onAction="#joinGame" text="Join game">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="461.0" fx:id="joinGameErrorLbl" visible="false" layoutY="114.0" text="Please enter valid ID and controlls" textFill="RED" />
+      <Label fx:id="joinGameSuccesLbl" visible="false" layoutX="492.0" layoutY="308.0" text="Game was joined!" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

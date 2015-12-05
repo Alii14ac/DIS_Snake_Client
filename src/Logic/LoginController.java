@@ -104,7 +104,6 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
             passwordErrorLbl.setVisible(false);
             loginErrorLbl.setVisible(false);
 
-
             myController.setScreen(Main.screenMenuID);
 
 
@@ -158,7 +157,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
 
         if(logic.createUser(firstNameCreateUserText.getText(),lastNameCreateUserText.getText(),userNameCreateUserText.getText(),
-                passwordCreateUserText.getText(),emailCreateUserText.getText())){
+                passwordCreateUserText.getText(),emailCreateUserText.getText())) {
 
             logic.createGame("alexGameTest","wwwdddssss");
 
@@ -184,6 +183,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
     public void createGame(){
         myController.setScreen(Main.screenCreateGameID);
+
 
 
     }

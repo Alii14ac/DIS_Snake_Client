@@ -142,7 +142,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     }
 
     public void createNewUser(){
-        //TODO make error and ok messages
+        //TODO make error and ok messages.. make local strings
         //TODO-maybe: make required password length(and double type it) and check for correct email format
 
         if(firstNameCreateUserText.getText().equals("") && lastNameCreateUserText.getText().equals("") && userNameCreateUserText.getText().equals("") &&

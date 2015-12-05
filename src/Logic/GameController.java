@@ -59,7 +59,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //TODO find out how to use the logic.getOpenGames object
+
 
         //this is alreay set in fxml file
         //DCol.setCellValueFactory(new PropertyValueFactory<Game, Integer>("gameId"));
@@ -71,6 +71,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
         myController = screenParent;
     }
 
+    //TODO-PRIORITY GET THIS TO WORK!! posibles solutions: 1. make specific class instead of using the Game class 2. look at the cellValue 3. look at the way you set an ArrayList -> observableArrayList = observableList 4. look at what the server sends and if matches what i want to recieve
 
     public void populateTable(){
 

@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -33,7 +34,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
 
 
-    ObservableList<Game> openGames = logic.getOpenGames();
+
 
     //create game components
 
@@ -44,22 +45,33 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
     @FXML
     private TableView<Game> table;
-    public TableColumn iDCol,hostCol;
+    //public TableColumn gameID,Host;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        iDCol.setCellValueFactory(new PropertyValueFactory<Game, Integer>("gameId"));
+        //TODO find out how to use the logic.getOpenGames object
 
-        table.setItems(openGames);
+        //this is alreay set in fxml file
+        //DCol.setCellValueFactory(new PropertyValueFactory<Game, Integer>("gameId"));
+
+        //table.setItems(openGames);
     }
 
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
     }
 
+
+    public void populateTable(){
+
+        //ArrayList<Game> data = logic.openGames();
+        ObservableList<Game> openGames = FXCollections.observableArrayList(logic.openGames());
+        table.setItems(openGames);
+
+    }
 
     public void menu(){
 
@@ -103,23 +115,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
         }
     }
 
-    public void populateTable(){
 
-
-
-
-
-
-        iDCol.setCellValueFactory(new PropertyValueFactory<Game, String>("ID"));
-
-
-
-
-
-
-
-
-    }
 
 
 }

@@ -3,7 +3,6 @@ package SDK;
 import Logic.GameController;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
@@ -124,13 +123,17 @@ public class Loogic {
 
     }
 
-    public ObservableList<Game> getOpenGames(){
+
+
+    public ArrayList<Game> openGames(){
 
         ServerConnection serverConnection = new ServerConnection();
 
         String Data = serverConnection.get("games/open/");
 
-        ObservableList<Game> openGames = new Gson().fromJson(Data, new TypeToken<ObservableList<Game>>(){}.getType());
+        ArrayList<Game> openGames = new Gson().fromJson(Data, new TypeToken<ArrayList<Game>>(){}.getType());
+
+
 
         return openGames;
 

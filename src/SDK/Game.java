@@ -1,23 +1,21 @@
 package SDK;
 
-import javafx.beans.property.SimpleIntegerProperty;
-
 import java.util.Date;
 
 /**
  * Created by alexanderlindkjaer on 27/10/15.
  */
 public class Game {
-    private SimpleIntegerProperty gameId;
+    private int gameIde
     private int result;
     private int newGame;
     private int endGame;
-    private SimpleIntegerProperty name;
+    private String namee
     private String hostControls;
     private User host;
     private User opponent;
     private String opponentControls;
-    private int status;
+    private String status;
     private Date created;
     private int mapSize;
 
@@ -60,7 +58,7 @@ public class Game {
         this.opponentControls = opponentControls;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

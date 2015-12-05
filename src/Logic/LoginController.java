@@ -180,8 +180,6 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     public void joinGame() throws IOException {
         myController.setScreen(Main.screenJoinGameID);
 
-
-
     }
 
     public void createGame(){

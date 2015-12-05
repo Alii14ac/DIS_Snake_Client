@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
-
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.GameController">
    <children>
       <Button layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#menu" text="Back" />
@@ -15,20 +15,20 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <TableView layoutX="50.0" layoutY="107.0" prefHeight="358.0" prefWidth="224.0" fx:id="table">
+      <TableView fx:id="table" layoutX="50.0" layoutY="107.0" prefHeight="358.0" prefWidth="224.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" fx:id="iDCol">
+          <TableColumn fx:id="gameID" prefWidth="75.0" text="ID">
             <cellValueFactory>
-                <PropertyValueFactory property="ID"/>
+                <PropertyValueFactory property="gameID" />
             </cellValueFactory>
           </TableColumn>
-          <TableColumn prefWidth="145.9711456298828" text="Host"  fx:id="hostCol">
+          <TableColumn fx:id="Host" prefWidth="145.9711456298828" text="Host">
             <cellValueFactory>
-                <PropertyValueFactory property="Host"/>
+                <PropertyValueFactory property="Host" />
             </cellValueFactory>
         </TableColumn>
         </columns>
       </TableView>
+      <Button layoutX="127.0" layoutY="70.0" mnemonicParsing="false" onAction="#populateTable" text="show table" />
    </children>
 </Pane>
-

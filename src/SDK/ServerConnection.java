@@ -51,10 +51,10 @@ public class ServerConnection {
         ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
 
 
-        if (response.getStatus() != 200) {
-            throw new RuntimeException("Failed : HTTP error code : "
-                    + response.getStatus());
-        }
+//        if (response.getStatus() != 200) {
+//            throw new RuntimeException("Failed : HTTP error code : "
+//                    + response.getStatus());
+//        }
 
         if (response.getStatus() !=0){
             return response.getEntity(String.class);

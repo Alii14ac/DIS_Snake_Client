@@ -14,6 +14,8 @@ import org.json.simple.parser.ParseException;
  */
 public class ServerConnection {
 
+    //TODO make a config file
+
     public ServerConnection(){
         this.hostAddress = "http://localhost";
         this.port = 8887;

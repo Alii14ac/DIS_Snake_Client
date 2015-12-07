@@ -7,13 +7,13 @@ import java.util.Date;
  */
 public class Game {
     private int gameId;
-    private User winner;
+    private UserStats winner;
     private int newGame;
     private int endGame;
     private String name;
     private String hostControls;
-    private User host;
-    private User opponent;
+    private UserStats host;
+    private UserStats opponent;
     private String opponentControls;
     private String status;
    // private Date created;
@@ -30,7 +30,7 @@ public class Game {
         return gameId;
     }
 
-    public void setResult(User winner) {
+    public void setResult(UserStats winner) {
         this.winner = winner;
     }
 
@@ -62,16 +62,24 @@ public class Game {
         return hostControls;
     }
 
-    public void setHost(User host) {
+    public void setHost(UserStats host) {
         this.host = host;
     }
 
-    public User getHost() {
+    public UserStats getHost() {
         return host;
     }
 
-    public void setOpponent(User opponent) {
+    public void setOpponent(UserStats opponent) {
         this.opponent = opponent;
+    }
+
+    public UserStats getOpponent() {
+        return opponent;
+    }
+
+    public String getOpponentControls() {
+        return opponentControls;
     }
 
     public void setOpponentControls(String opponentControls) {

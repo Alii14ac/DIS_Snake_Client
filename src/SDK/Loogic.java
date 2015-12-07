@@ -19,6 +19,7 @@ public class Loogic {
     ServerConnection serverConnection = new ServerConnection();
 
 
+
     public Loogic() {
 
         currentUser = new User();
@@ -26,6 +27,12 @@ public class Loogic {
     }
 
 
+    /**+
+     * Takes username and password and tries to login through Serverconnection.post()
+     * @param username
+     * @param password
+     * @return Boolean
+     */
     public boolean userAuth(String username, String password) {
 
 

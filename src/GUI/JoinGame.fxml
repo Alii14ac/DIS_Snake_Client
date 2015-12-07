@@ -15,7 +15,7 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="115.0" layoutY="203.0" onMouseClicked="#setGameID" prefHeight="297.0" prefWidth="224.0" visible="false">
+      <TableView fx:id="table" layoutX="115.0" layoutY="203.0" onMouseClicked="#setJoinGameID" prefHeight="297.0" prefWidth="224.0" visible="false">
         <columns>
           <TableColumn fx:id="gameIDCol" prefWidth="75.0" text="id">
             <!--<cellValueFactory>-->
@@ -41,7 +41,7 @@
       </Label>
       <TextField fx:id="joinGameID" layoutX="477.0" layoutY="141.0" />
       <TextField fx:id="joinControlls" layoutX="478.0" layoutY="194.0" />
-      <Button layoutX="510.0" layoutY="239.0" mnemonicParsing="false" onAction="#joinGame" text="Join game">
+      <Button layoutX="510.0" fx:id="joinBtn" layoutY="239.0" mnemonicParsing="false" onAction="#joinGame" text="Join game">
          <font>
             <Font size="18.0" />
          </font>

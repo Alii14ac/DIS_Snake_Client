@@ -1,6 +1,8 @@
 package Logic;
 
 import SDK.*;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.paint.Color;
 
 import javax.swing.*;
 
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -45,15 +48,18 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     public Label joinGameSuccesLbl,joinGameErrorLbl, winnerLbl;
     public TableColumn<Game,String> gameIDCol,hostCol;
     public RadioButton pickBtn;
+    public Button joinBtn;
 
 
     //delete game components
     @FXML
-    public TextField deleteGameID;
+    public TextField deleteGameIDTxt;
     public Label deleteGameErrorLbl,deleteGameSuccesLbl;
     public TableView<Game> tableDelete;
-    public TableColumn<Game,String> colDelID,colDelHost,colDelOpp,colDelName,colDelStatus,colDelWinner ;
-//    public TableColumn<Game,User>
+    public TableColumn<Game,String> colDelID,colDelName,colDelStatus ;
+    public TableColumn<Game,Number> colDelHost,colDelOpp,colDelWinner ;
+    public RadioButton finishedRadio,openRadio;
+    public Button deleteBtn;
     // public TableColumn<Game,Integer> ;
 
 
@@ -76,12 +82,21 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     }
 
 
-     public void setGameID(){
+     public void setJoinGameID(ActionEvent e){
 
-         Game game = table.getSelectionModel().getSelectedItem();
-         String id = Integer.toString(game.getGameId());
-         joinGameID.setText(id);
+             Game game = table.getSelectionModel().getSelectedItem();
+             String id = Integer.toString(game.getGameId());
+             joinGameID.setText(id);
+
      }
+
+    public void setDeleteGameID(){
+
+        Game game = tableDelete.getSelectionModel().getSelectedItem();
+        String id = Integer.toString(game.getGameId());
+        deleteGameIDTxt.setText(id);
+
+    }
 
     public void populateTable(){
 
@@ -101,22 +116,42 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
     //TODO make user choose between his own open and finished games.. use actionEvent
     //TODO find out how to display only the relevant variable from an object.. start with TableColumn<Game,Object>
-    public void populateDeleteTable(){
-        tableDelete.setVisible(true);
+    public void populateDeleteTable(ActionEvent e){
 
         colDelID.setCellValueFactory(new PropertyValueFactory<Game, String>("gameId"));
-        colDelHost.setCellValueFactory(new PropertyValueFactory<Game, String>("host"));
-        colDelOpp.setCellValueFactory(new PropertyValueFactory<Game, String>("opponent"));
+        colDelHost.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getHost().getId()));
+
         colDelName.setCellValueFactory(new PropertyValueFactory<Game, String>("name"));
         colDelStatus.setCellValueFactory(new PropertyValueFactory<Game, String>("status"));
-        colDelWinner.setCellValueFactory(new PropertyValueFactory<Game, String>("winner"));
 
-//        ArrayList<Game> data = logic.openGames();
 
-//        YHE FINAL CODE
-        ObservableList<Game> games = FXCollections.observableArrayList(logic.gameByStatus("finished"));
-        tableDelete.setItems(games);
+        //gets and sets the table for finished games by currentuser
+        if(e.getSource()==finishedRadio) {
 
+            colDelOpp.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getOpponent().getId()));
+            colDelWinner.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getWinner().getId()));
+
+            ObservableList<Game> games = FXCollections.observableArrayList(logic.gameByStatus("finished"));
+            tableDelete.setItems(games);
+
+            tableDelete.setVisible(true);
+
+        }
+        //gets and sets the table for open games by currentuser
+        if(e.getSource()==openRadio) {
+
+            int number=0;
+
+            //disse er ikke sat for open games
+            colDelOpp.setCellValueFactory(param -> new SimpleIntegerProperty(number));
+            colDelWinner.setCellValueFactory(param -> new SimpleIntegerProperty(number));
+
+            ObservableList<Game> games = FXCollections.observableArrayList(logic.gameByStatus("open"));
+            tableDelete.setItems(games);
+
+            tableDelete.setVisible(true);
+
+        }
 
 
     }
@@ -169,6 +204,8 @@ public class GameController implements Initializable, GUI.ControlledScreen {
         }
     }
 
+    //TODO make user restricted to only setting the gameID from the table
+    //TODO make table display when the screen is opened
     public void joinGame(){
 
         int gameId = Integer.parseInt(joinGameID.getText());
@@ -201,7 +238,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
         try {
 
-            int gameID = Integer.parseInt(deleteGameID.getText());
+            int gameID = Integer.parseInt(deleteGameIDTxt.getText());
 
             deleteGameErrorLbl.setVisible(false);
             deleteGameSuccesLbl.setVisible(false);

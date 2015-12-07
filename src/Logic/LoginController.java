@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable, GUI.ControlledScreen {
 
     ScreensController myController;
+
     //User currentUser;
 
 
@@ -60,6 +61,8 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     Dto dto = new Dto();
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -70,6 +73,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     }
 
     public void Login() throws IOException{
+
 
         //TODO set username og password til en string istedet for at hent dem på den måde
 
@@ -178,6 +182,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
     public void joinGame() throws IOException {
         myController.setScreen(Main.screenJoinGameID);
+
 
     }
 

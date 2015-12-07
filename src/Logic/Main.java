@@ -5,6 +5,7 @@ package Logic;/**
 
 
 import SDK.Api;
+import SDK.Game;
 import SDK.Loogic;
 import SDK.ServerConnection;
 import javafx.application.Application;
@@ -75,7 +76,6 @@ public class Main extends Application {
     Api api = new Api();
     Loogic lg = new Loogic();
 
-
 //      lg.userAuth("at","berg");
 //      lg.joinGame(50,"wwaaasssss");
 //      lg.startGame(48);
@@ -84,6 +84,13 @@ public class Main extends Application {
 
       launch(args);
 
+      //lg.setUser();
+      //lg.openGames();
+
+//      for (Game p : lg.gameByStatus("finished")) {
+////
+//      System.out.println("game id: " + p.getGameId()+ ", game name: " + p.getName());
+//      }
 
   }
 

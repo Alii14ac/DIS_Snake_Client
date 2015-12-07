@@ -14,22 +14,22 @@ public class Loogic {
 
 
     private static User currentUser;
-//    User currentUser = new User();
+    private static Game lastPlayed;
+    //    User currentUser = new User();
     ServerConnection serverConnection = new ServerConnection();
 
 
-
-    public Loogic(){
+    public Loogic() {
 
         currentUser = new User();
+        lastPlayed = new Game();
     }
 
 
+    public boolean userAuth(String username, String password) {
 
-    public boolean userAuth(String username,String password){
 
-
-    ServerConnection serverConnection = new ServerConnection();
+        ServerConnection serverConnection = new ServerConnection();
 
         User usr = new User();
 
@@ -39,42 +39,32 @@ public class Loogic {
 
         String json = new Gson().toJson(usr);
 
-            String message = serverConnection.stringMessageParser(serverConnection.post(json, "login/"));
-            System.out.println(message);
+        String message = serverConnection.stringMessageParser(serverConnection.post(json, "login/"));
+        System.out.println(message);
 
-            if (message.equals("Login successful")) {
+        if (message.equals("Login successful")) {
 
-                for (User user : SDK.Loogic.setUser() )
-                {
-                    if (user.getUsername().equals(username))
-                    {
-                       currentUser = user;
+            for (User user : SDK.Loogic.setUser()) {
+                if (user.getUsername().equals(username)) {
+                    currentUser = user;
 
-                    }
                 }
-
-
-
-                return true;
-            } else if (message.equals("Wrong username or password") || message.equals("Error in JSON")) {
-
-                return false;
             }
 
+
+            return true;
+        } else if (message.equals("Wrong username or password") || message.equals("Error in JSON")) {
+
+            return false;
+        }
+
         return false;
-
-
 
 
     }
 
 
-
-
-
-    public boolean createUser(String firstName, String lastName, String userName, String password, String email ){
-
-
+    public boolean createUser(String firstName, String lastName, String userName, String password, String email) {
 
 
         ServerConnection serverConnection = new ServerConnection();
@@ -104,46 +94,51 @@ public class Loogic {
 
     }
 
-    public static ArrayList<User> setUser(){
+    public static ArrayList<User> setUser() {
         ServerConnection serverConnection = new ServerConnection();
 
         String Data = serverConnection.get("users/");
 
-        ArrayList<User> users = new Gson().fromJson(Data, new TypeToken<ArrayList<User>>(){}.getType());
+        ArrayList<User> users = new Gson().fromJson(Data, new TypeToken<ArrayList<User>>() {
+        }.getType());
 
         return users;
 
     }
 
 
-
-    public ArrayList<Game> openGames(){
+    public ArrayList<Game> openGames() {
 
         ServerConnection serverConnection = new ServerConnection();
 
         String Data = serverConnection.get("games/open/");
 
-        ArrayList<Game> openGames = new Gson().fromJson(Data, new TypeToken<ArrayList<Game>>(){}.getType());
+        ArrayList<Game> openGames = new Gson().fromJson(Data, new TypeToken<ArrayList<Game>>() {
+        }.getType());
 
-        for(Game game : openGames){
 
-            System.out.printf(game.getName());
-        }
+//        for (Game p : openGames)
+//
+//            System.out.println("game id: " + p.getGameId()+ ", game name: " + p.getName());
+
 
         return openGames;
 
     }
 
-    public static void deleteUser(int userId){
+    public static void deleteUser(int userId) {
 
     }
-    public static void getUser(int userId){
+
+    public static void getUser(int userId) {
 
     }
-    public static void getGame(int gameId){
+
+    public static void getGame(int gameId) {
 
     }
-    public boolean joinGame(int gameId, String controls){
+
+    public boolean joinGame(int gameId, String controls) {
 
         ServerConnection serverConnection = new ServerConnection();
 
@@ -164,9 +159,9 @@ public class Loogic {
         System.out.println(message);
 
 
-
         if (message.equals("Game was joined")) {
 
+            lastPlayed.setGameId(gameId);
             startGame(game);
             return true;
         }
@@ -177,7 +172,7 @@ public class Loogic {
     }
 
 
-    public boolean startGame(Game game){
+    public boolean startGame(Game game) {
 
 //        Game game = new Game();
 //
@@ -191,7 +186,6 @@ public class Loogic {
         System.out.println(message);
 
 
-
         if (message.equals("game started")) {
 
             return true;
@@ -200,7 +194,8 @@ public class Loogic {
         return false;
 
     }
-    public boolean createGame(String gameName, String hostControlls){
+
+    public boolean createGame(String gameName, String hostControlls) {
         //host, opponent, status, name, host_controls, map_size
 
 
@@ -214,9 +209,6 @@ public class Loogic {
         game.setName(gameName);
         game.setHost(host);
         game.setMapSize(20);
-        //TODO opponent bliver sat til 0 istedet for NULL,, find ud af om det gør noget,, ellers lav det om i koden eller databasen
-        game.setOpponent(null);
-
 
 
         String json = new Gson().toJson(game);
@@ -225,7 +217,6 @@ public class Loogic {
 
         String message = serverConnection.stringMessageParser(serverConnection.post(json, "games/"));
         System.out.println(message);
-
 
 
         if (message.equals("game was created")) {
@@ -239,13 +230,13 @@ public class Loogic {
         return false;
 
     }
-    public boolean deleteGame(int gameId){
+
+    public boolean deleteGame(int gameId) {
 
         ServerConnection serverConnection = new ServerConnection();
 
         String message = serverConnection.stringMessageParser(serverConnection.delete("games/" + gameId));
         System.out.println(message);
-
 
 
         if (message.equals("Game was deleted")) {
@@ -257,17 +248,61 @@ public class Loogic {
 
     }
 
-    public static boolean isNumeric(String str)
-    {
-        try
-        {
+    public static boolean isNumeric(String str) {
+        try {
             int d = Integer.parseInt(str);
-        }
-        catch(NumberFormatException nfe)
-        {
+        } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
+    }
+
+    public String winner() {
+
+        ServerConnection serverConnection = new ServerConnection();
+
+        String id = Integer.toString(lastPlayed.getGameId());
+
+        String Data = serverConnection.get("game/" + id);
+
+        Game game = new Gson().fromJson(Data, new TypeToken<Game>() {
+        }.getType());
+
+
+//        System.out.println(game.getWinner().getId());
+
+        if (game.getWinner().getId() == currentUser.getId()) {
+            return "You Won!";
+
+        } else {
+
+            return "You Lost!";
+        }
+
+
+    }
+
+    public ArrayList<Game> gameByStatus(String status) {
+
+        ServerConnection serverConnection = new ServerConnection();
+
+        String id = Integer.toString(currentUser.getId());
+
+        ///games/{status}/{userid}"
+        String Data = serverConnection.get("games/" + status + "/" + id);
+
+        ArrayList<Game> games = new Gson().fromJson(Data, new TypeToken<ArrayList<Game>>() {
+        }.getType());
+
+
+//        for (Game p : openGames)
+//
+//            System.out.println("game id: " + p.getGameId()+ ", game name: " + p.getName());
+
+
+        return games;
+
+
     }
 
 }

@@ -15,27 +15,31 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="29.0" layoutY="141.0" prefHeight="358.0" prefWidth="224.0">
+      <TableView fx:id="tableDelete" layoutX="14.0" layoutY="141.0" prefHeight="358.0" prefWidth="480.0">
         <columns>
-          <TableColumn fx:id="gameID" prefWidth="75.0" text="ID">
+          <TableColumn fx:id="colDelID" prefWidth="49.7481689453125" text="ID">
             <cellValueFactory>
                 <PropertyValueFactory property="gameID" />
             </cellValueFactory>
           </TableColumn>
-          <TableColumn fx:id="Host" prefWidth="145.9711456298828" text="Host">
+          <TableColumn fx:id="colDelHost" prefWidth="69.2518424987793" text="Host">
             <cellValueFactory>
                 <PropertyValueFactory property="Host" />
             </cellValueFactory>
         </TableColumn>
+            <TableColumn fx:id="colDelOpp" prefWidth="77.47816467285156" text="Opponent" />
+            <TableColumn fx:id="colDelName" prefWidth="112.13499450683594" text="Game name" />
+            <TableColumn fx:id="colDelStatus" prefWidth="70.67880249023438" text="Status" />
+            <TableColumn fx:id="colDelWinner" prefWidth="97.3211669921875" text="winner" />
         </columns>
       </TableView>
-      <Button layoutX="76.0" layoutY="99.0" mnemonicParsing="false" onAction="#populateTable" text="Show open games" />
-      <Label layoutX="367.0" layoutY="143.0" text="Game ID" textFill="WHITE">
+      <Button layoutX="76.0" layoutY="99.0" mnemonicParsing="false" onAction="#populateDeleteTable" text="Show games" />
+      <Label layoutX="499.0" layoutY="143.0" text="Game ID" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="deleteGameID" layoutX="477.0" layoutY="141.0" />
+      <TextField fx:id="deleteGameID" layoutX="588.0" layoutY="141.0" prefHeight="27.0" prefWidth="56.0" />
       <Button layoutX="497.0" layoutY="208.0" mnemonicParsing="false" onAction="#deleteGame" text="Delete game">
          <font>
             <Font size="18.0" />

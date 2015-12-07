@@ -15,21 +15,20 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="29.0" layoutY="141.0" prefHeight="358.0" prefWidth="224.0">
+      <TableView fx:id="table" layoutX="115.0" layoutY="203.0" onMouseClicked="#setGameID" prefHeight="297.0" prefWidth="224.0" visible="false">
         <columns>
-          <TableColumn fx:id="gameID" prefWidth="75.0" text="ID">
-            <cellValueFactory>
-                <PropertyValueFactory property="gameID" />
-            </cellValueFactory>
+          <TableColumn fx:id="gameIDCol" prefWidth="75.0" text="id">
+            <!--<cellValueFactory>-->
+                <!--<PropertyValueFactory property="id" />-->
+            <!--</cellValueFactory>-->
           </TableColumn>
-          <TableColumn fx:id="Host" prefWidth="145.9711456298828" text="Host">
-            <cellValueFactory>
-                <PropertyValueFactory property="Host" />
-            </cellValueFactory>
+          <TableColumn fx:id="hostCol" prefWidth="145.9711456298828" text="Game name">
+            <!--<cellValueFactory>-->
+                <!--<PropertyValueFactory property="host" />-->
+            <!--</cellValueFactory>-->
         </TableColumn>
         </columns>
       </TableView>
-      <Button layoutX="73.0" layoutY="85.0" mnemonicParsing="false" onAction="#populateTable" text="Show open games" />
       <Label layoutX="367.0" layoutY="143.0" text="Game ID" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -47,10 +46,28 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="461.0" fx:id="joinGameErrorLbl" visible="false" layoutY="114.0" text="Please enter valid ID and controlls" textFill="RED" />
-      <Label fx:id="joinGameSuccesLbl" visible="false" layoutX="492.0" layoutY="308.0" text="Game was joined!" textFill="WHITE">
+      <Label fx:id="joinGameErrorLbl" layoutX="461.0" layoutY="114.0" text="Please enter valid ID and controlls" textFill="RED" visible="false" />
+      <Label fx:id="joinGameSuccesLbl" layoutX="492.0" layoutY="308.0" text="Game was joined!" textFill="WHITE" visible="false">
          <font>
             <Font size="18.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="pickBtn" layoutX="126.0" layoutY="142.0" mnemonicParsing="false" onAction="#populateTable" text="Pick open game" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="joinGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="hideTable" layoutX="126.0" layoutY="173.0" mnemonicParsing="false" onAction="#hideTables" selected="true" text="Hide open games" textFill="WHITE" toggleGroup="$joinGroup">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <Label fx:id="winnerLbl" layoutX="488.0" layoutY="368.0" text="You Won" textFill="WHITE" underline="true" visible="false">
+         <font>
+            <Font size="36.0" />
          </font>
       </Label>
    </children>

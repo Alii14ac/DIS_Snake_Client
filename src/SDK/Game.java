@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Game {
     private int gameId;
-    private int result;
+    private User winner;
     private int newGame;
     private int endGame;
     private String name;
@@ -16,7 +16,7 @@ public class Game {
     private User opponent;
     private String opponentControls;
     private String status;
-    private Date created;
+   // private Date created;
     private int mapSize;
 
     public Game(){}
@@ -26,8 +26,16 @@ public class Game {
         this.gameId = gameId;
     }
 
-    public void setResult(int result) {
-        this.result = result;
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setResult(User winner) {
+        this.winner = winner;
+    }
+
+    public User getWinner() {
+        return winner;
     }
 
     public void setNewGame(int newGame) {
@@ -50,8 +58,16 @@ public class Game {
         this.hostControls = hostControls;
     }
 
+    public String getHostControls() {
+        return hostControls;
+    }
+
     public void setHost(User host) {
         this.host = host;
+    }
+
+    public User getHost() {
+        return host;
     }
 
     public void setOpponent(User opponent) {
@@ -66,13 +82,17 @@ public class Game {
         this.status = status;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
+    public String getStatus() {
+        return status;
     }
 
-    public Date getCreated() {
-        return created;
-    }
+    //    public void setCreated(Date created) {
+//        this.created = created;
+//    }
+//
+//    public Date getCreated() {
+//        return created;
+//    }
 
     public void setMapSize(int mapSize) {
         this.mapSize = mapSize;

@@ -1,22 +1,17 @@
 package Logic;
 
-import SDK.Dto;
-import SDK.Game;
-import SDK.Loogic;
-import SDK.UserStats;
+import SDK.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.*;
 import javafx.scene.paint.Color;
 
 import javax.swing.*;
-import javax.swing.table.TableColumn;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -47,37 +42,88 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     @FXML
     public TableView<Game> table;
     public TextField joinGameID,joinControlls;
-    public Label joinGameSuccesLbl,joinGameErrorLbl;
-    //public TableColumn gameID,Host;
+    public Label joinGameSuccesLbl,joinGameErrorLbl, winnerLbl;
+    public TableColumn<Game,String> gameIDCol,hostCol;
+    public RadioButton pickBtn;
+
 
     //delete game components
     @FXML
     public TextField deleteGameID;
     public Label deleteGameErrorLbl,deleteGameSuccesLbl;
+    public TableView<Game> tableDelete;
+    public TableColumn<Game,String> colDelID,colDelHost,colDelOpp,colDelName,colDelStatus,colDelWinner ;
+//    public TableColumn<Game,User>
+    // public TableColumn<Game,Integer> ;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+//        gameIDCol.setCellValueFactory(new PropertyValueFactory<Game, String>("gameId"));
+//        hostCol.setCellValueFactory(new PropertyValueFactory<Game, String>("name"));
+//
+//        ObservableList<Game> openGames = FXCollections.observableArrayList(logic.openGames());
+//        table.setItems(openGames);
 
 
-        //this is alreay set in fxml file
-        //DCol.setCellValueFactory(new PropertyValueFactory<Game, Integer>("gameId"));
 
-        //table.setItems(openGames);
     }
 
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
     }
 
-    //TODO-PRIORITY GET THIS TO WORK!! posibles solutions: 1. make specific class instead of using the Game class 2. look at the cellValue 3. look at the way you set an ArrayList -> observableArrayList = observableList 4. look at what the server sends and if matches what i want to recieve
+
+     public void setGameID(){
+
+         Game game = table.getSelectionModel().getSelectedItem();
+         String id = Integer.toString(game.getGameId());
+         joinGameID.setText(id);
+     }
 
     public void populateTable(){
 
-        //ArrayList<Game> data = logic.openGames();
+        table.setVisible(true);
+
+        gameIDCol.setCellValueFactory(new PropertyValueFactory<Game, String>("gameId"));
+        hostCol.setCellValueFactory(new PropertyValueFactory<Game, String>("name"));
+
+
+
+//        YHE FINAL CODE
         ObservableList<Game> openGames = FXCollections.observableArrayList(logic.openGames());
         table.setItems(openGames);
+
+
+    }
+
+    //TODO make user choose between his own open and finished games.. use actionEvent
+    //TODO find out how to display only the relevant variable from an object.. start with TableColumn<Game,Object>
+    public void populateDeleteTable(){
+        tableDelete.setVisible(true);
+
+        colDelID.setCellValueFactory(new PropertyValueFactory<Game, String>("gameId"));
+        colDelHost.setCellValueFactory(new PropertyValueFactory<Game, String>("host"));
+        colDelOpp.setCellValueFactory(new PropertyValueFactory<Game, String>("opponent"));
+        colDelName.setCellValueFactory(new PropertyValueFactory<Game, String>("name"));
+        colDelStatus.setCellValueFactory(new PropertyValueFactory<Game, String>("status"));
+        colDelWinner.setCellValueFactory(new PropertyValueFactory<Game, String>("winner"));
+
+//        ArrayList<Game> data = logic.openGames();
+
+//        YHE FINAL CODE
+        ObservableList<Game> games = FXCollections.observableArrayList(logic.gameByStatus("finished"));
+        tableDelete.setItems(games);
+
+
+
+    }
+
+    public void hideTables(){
+
+     table.setVisible(false);
 
     }
 
@@ -134,6 +180,14 @@ public class GameController implements Initializable, GUI.ControlledScreen {
         if(logic.joinGame(gameId, controls)){
             joinGameSuccesLbl.setVisible(true);
             joinGameErrorLbl.setVisible(false);
+
+            if(pickBtn.isSelected()){
+                populateTable();
+            }
+
+           winnerLbl.setText(logic.winner());
+           winnerLbl.setVisible(true);
+
         }else{
             joinGameSuccesLbl.setVisible(false);
             joinGameErrorLbl.setVisible(true);

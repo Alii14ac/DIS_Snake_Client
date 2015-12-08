@@ -35,14 +35,10 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     //login components
     @FXML
     public Button loginButton;
-    public TextField usernameText;
-    public PasswordField passwordText;
+    @FXML public TextField usernameText;
+    @FXML public PasswordField passwordText;
     public Hyperlink newUserStage;
     public Label usernameErrorLbl, passwordErrorLbl, loginErrorLbl;
-
-    //menu components
-    @FXML
-    public Button logoutButton;
 
     //createUser components
     @FXML
@@ -52,8 +48,6 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
             emailCreateUserLabel, createUserErrorLbl, emptyFieldErrorLbl, succesLbl ;
     public TextField firstNameCreateUserText, lastNameCreateUserText, userNameCreateUserText,passwordCreateUserText,
             emailCreateUserText;
-
-
 
 
     Loogic logic = new Loogic();
@@ -66,6 +60,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+
     }
 
     public void setScreenParent(ScreensController screenParent){
@@ -73,7 +68,6 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
     }
 
     public void Login() throws IOException{
-
 
         //TODO set username og password til en string istedet for at hent dem på den måde
 
@@ -108,6 +102,12 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
             passwordErrorLbl.setVisible(false);
             loginErrorLbl.setVisible(false);
 
+            usernameText.clear();
+            passwordText.clear();
+
+            //TODO get menu to display currentuser
+
+
             myController.setScreen(Main.screenMenuID);
 
 
@@ -129,21 +129,22 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
 
     }
 
-    @FXML
-    public void logout () throws IOException{
-//
-//        usernameText.setText("");
-//        passwordText.setText("");
-//        succesLbl.setVisible(false);
 
+    public void logout () throws IOException{
+
+        logic.setCurrentUser(null);
         myController.setScreen(Main.screenLoginID);
 
-        Dto dto = new Dto();
-
-
-
-
     }
+
+//    public void showUser(){
+//
+//
+//        currentUserLbl.setText(logic.getCurrentUser().getUsername());
+//
+//        myController.
+//
+//    }
 
     public void createNewUser(){
         //TODO make error and ok messages.. make local strings
@@ -180,31 +181,7 @@ public class LoginController implements Initializable, GUI.ControlledScreen {
         }
     }
 
-    public void joinGame() throws IOException {
-        myController.setScreen(Main.screenJoinGameID);
 
-
-    }
-
-    public void createGame(){
-        myController.setScreen(Main.screenCreateGameID);
-
-
-
-    }
-
-    public void highscores(){
-
-        myController.setScreen(Main.screenHighscoresID);
-
-    }
-
-    public void deleteGame(){
-
-        myController.setScreen(Main.screenDeleteGameID);
-
-
-    }
 
 
 

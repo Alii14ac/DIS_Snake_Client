@@ -26,6 +26,13 @@ public class Loogic {
         lastPlayed = new Game();
     }
 
+    public static void setCurrentUser(User currentUser) {
+        Loogic.currentUser = currentUser;
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
 
     /**+
      * Takes username and password and tries to login through Serverconnection.post()
@@ -100,7 +107,7 @@ public class Loogic {
 
 
     }
-
+    //TODO change the name for this method
     public static ArrayList<User> setUser() {
         ServerConnection serverConnection = new ServerConnection();
 
@@ -309,6 +316,40 @@ public class Loogic {
 
         return games;
 
+
+    }
+
+    public ArrayList<Score> getTopHighScores() {
+
+        ServerConnection serverConnection = new ServerConnection();
+
+        String Data = serverConnection.get("scores/top/");
+
+        ArrayList<Score> topScores = new Gson().fromJson(Data, new TypeToken<ArrayList<Score>>() {
+        }.getType());
+
+
+//        for (Game p : openGames)
+//
+//            System.out.println("game id: " + p.getGameId()+ ", game name: " + p.getName());
+
+
+        return topScores;
+
+    }
+
+    public ArrayList<Score> getTopHighScoresByUserID() {
+
+        ServerConnection serverConnection = new ServerConnection();
+
+        String userId = Integer.toString(currentUser.getId());
+
+        String Data = serverConnection.get("scores/top/"+userId);
+
+        ArrayList<Score> topScores = new Gson().fromJson(Data, new TypeToken<ArrayList<Score>>() {
+        }.getType());
+
+        return topScores;
 
     }
 

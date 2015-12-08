@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="725.0" style="-fx-background-color: #3E4D56;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logic.MenuController">
    <children>
       <Label layoutX="300.0" layoutY="18.0" text="Menu" textFill="WHITE">
          <font>
@@ -41,5 +41,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="575.0" layoutY="36.0" textFill="WHITE"  fx:id="currentUserLbl">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

@@ -26,8 +26,8 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
     ScreensController myController;
     Loogic logic = new Loogic();
-    Main main = new Main();
-    private Dto dto;
+
+
 
 
 
@@ -66,14 +66,6 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-//        gameIDCol.setCellValueFactory(new PropertyValueFactory<Game, String>("gameId"));
-//        hostCol.setCellValueFactory(new PropertyValueFactory<Game, String>("name"));
-//
-//        ObservableList<Game> openGames = FXCollections.observableArrayList(logic.openGames());
-//        table.setItems(openGames);
-
-
 
     }
 
@@ -114,8 +106,7 @@ public class GameController implements Initializable, GUI.ControlledScreen {
 
     }
 
-    //TODO make user choose between his own open and finished games.. use actionEvent
-    //TODO find out how to display only the relevant variable from an object.. start with TableColumn<Game,Object>
+
     public void populateDeleteTable(ActionEvent e){
 
         colDelID.setCellValueFactory(new PropertyValueFactory<Game, String>("gameId"));
@@ -205,7 +196,6 @@ public class GameController implements Initializable, GUI.ControlledScreen {
     }
 
     //TODO make user restricted to only setting the gameID from the table
-    //TODO make table display when the screen is opened
     public void joinGame(){
 
         int gameId = Integer.parseInt(joinGameID.getText());
